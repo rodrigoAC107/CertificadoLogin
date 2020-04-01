@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-04-2020 a las 06:32:37
+-- Tiempo de generación: 02-04-2020 a las 01:27:16
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.3.15
 
@@ -50,7 +50,7 @@ CREATE TABLE `certificados` (
 --
 
 INSERT INTO `certificados` (`id`, `organizacion_id`, `nombre_empleado`, `apellido_empleado`, `dni_empleado`, `cuit_cuil_empleado`, `numero_cuit_cuil_empleado`, `telefono_empleado`, `direccion_empleado`, `hora_ingreso_empleado`, `hora_salida_empleado`, `dias_laborables_empleado`, `created_at`, `updated_at`) VALUES
-(4, 41529284, 'Rodrigo Gabriel', 'Cruz', 123123123, 'CUIT', 123123123, 3874150562, 'La Rioja Argentina.', '06:00', '06:00', 'asdasdasd', '2020-04-01 04:31:30', '2020-04-01 04:31:30');
+(1, 41529284, 'Rodrigo Gabriel', 'Cruz', 123123, 'CUIT', 123123, 3874150562, 'La Rioja Argentina.', '06:00', '06:00', 'asddq wdq', '2020-04-02 02:15:21', '2020-04-02 02:15:21');
 
 -- --------------------------------------------------------
 
@@ -100,8 +100,7 @@ CREATE TABLE `organizacion` (
 --
 
 INSERT INTO `organizacion` (`id`, `razon_social_organizacion`, `descripcion_organizacion`, `direccion_organizacion`, `cuit_organizacion`, `rubro_organizacion`, `actividad_organizacion`, `telefono_organizacion`, `email_organizacion`, `inciso_organizacion`, `created_at`, `updated_at`) VALUES
-(1, 'rasd', 'asdasd', 'La Rioja Argentina', 41529284, 'asdasd', 'asdasd', 3874150562, 'rodrigoacosta1115@gmail.com', '1', '2020-04-01 01:35:46', '2020-04-01 02:11:47'),
-(3, 'rasd', 'asdasd', 'La Rioja', 41529285, 'asdasd', 'asdasd', 3874150562, 'rodrigoacosta115@gmail.com', '1', '2020-04-01 04:22:06', '2020-04-01 04:23:42');
+(1, 'rasd', 'asdasd', 'La Rioja Argentina.', 41529284, 'asdasd', 'asdasd', 3874150562, 'rodrigoacosta1115@gmail.com', '4', '2020-04-02 02:14:49', '2020-04-02 02:14:49');
 
 -- --------------------------------------------------------
 
@@ -139,8 +138,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `cuit_organizacion`, `name`, `email`, `email_verified_at`, `password`, `activo`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 41529284, 'Rodrigo Gabriel Acosta Cruz', 'rodrigoacosta1115@gmail.com', NULL, '$2y$10$.rPXmxdDEBoEfEH8J8JndeTQOgdpe7okY.PvRoU9dGUcf80Guvyoe', 1, NULL, '2020-04-01 01:35:24', '2020-04-01 01:35:24'),
-(2, 41529285, 'Rodrigo', 'admin@admin.com', NULL, '$2y$10$CcTEYKwptrbXPT/1WW1d0.aXFLj94X8vFuu/3jwjL0QZQ.TaQDFoi', 1, NULL, '2020-04-01 04:20:45', '2020-04-01 04:20:45');
+(1, 41529284, 'Rodrigo Gabriel Acosta Cruz', 'rodrigoacosta1115@gmail.com', NULL, '$2y$10$qODatMdP/eef9CTBYb2CZuMh5o6DvOrazEmgXT0IJhhzMwaVmBY0S', 1, NULL, '2020-04-02 02:14:35', '2020-04-02 02:14:35');
 
 --
 -- Índices para tablas volcadas
@@ -150,7 +148,9 @@ INSERT INTO `users` (`id`, `cuit_organizacion`, `name`, `email`, `email_verified
 -- Indices de la tabla `certificados`
 --
 ALTER TABLE `certificados`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `certificados_dni_empleado_unique` (`dni_empleado`),
+  ADD UNIQUE KEY `certificados_numero_cuit_cuil_empleado_unique` (`numero_cuit_cuil_empleado`);
 
 --
 -- Indices de la tabla `migrations`
@@ -186,7 +186,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `certificados`
 --
 ALTER TABLE `certificados`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -198,13 +198,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `organizacion`
 --
 ALTER TABLE `organizacion`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

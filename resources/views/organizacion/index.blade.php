@@ -41,10 +41,10 @@
             </div>
             <div class="form-group col-md-6">
               <label for="email_organizacion">Email</label>
-              <input type="email_organizacion" name="email_organizacion" class="form-control{{ $errors->has('organizacion') ? ' is-invalid' : '' }}" id="email" required>
-              @if ($errors->has('organizacion'))
+              <input type="email_organizacion" name="email_organizacion" class="form-control{{ $errors->has('email_organizacion') ? ' is-invalid' : '' }}" id="email" required>
+              @if ($errors->has('email_organizacion'))
                 <span class="invalid-feedback">
-                    <strong>{{ $errors->first('organizacion') }}</strong>
+                    <strong>{{ $errors->first('email_organizacion') }}</strong>
                 </span>
               @endif
             </div>      

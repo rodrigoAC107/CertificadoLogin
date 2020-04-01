@@ -9,15 +9,15 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputNomEmp">Nombre</label>
-              <input type="text" name="nombre_empleado" class="form-control" id="inputNomEmp">
+              <input type="text" name="nombre_empleado" class="form-control" id="inputNomEmp" required>
             </div>
             <div class="form-group col-md-6">
               <label for="inputApellidoEmp">Apellido</label>
-              <input type="text" name="apellido_empleado" class="form-control" id="inputApellidoEmp">
+              <input type="text" name="apellido_empleado" class="form-control" id="inputApellidoEmp" required>
             </div>      
             <div class="form-group col-md-5">
               <label for="dni_empleado">Dni</label>
-              <input type="number" name="dni_empleado" class="form-control{{ $errors->has('dni_empleado') ? ' is-invalid' : '' }}" id="dni_empleado">
+              <input type="number" name="dni_empleado" class="form-control{{ $errors->has('dni_empleado') ? ' is-invalid' : '' }}" id="dni_empleado" required>
               @if ($errors->has('dni_empleado'))
                 <span class="invalid-feedback">
                     <strong>{{ $errors->first('dni_empleado') }}</strong>
@@ -26,14 +26,14 @@
             </div>
             <div class="form-group col-md-2">
               <label for="exampleFormControlSelect1">CUIT/CUIL</label>
-              <select name="cuit_cuil_empleado" class="form-control" id="exampleFormControlSelect1">
+              <select name="cuit_cuil_empleado" class="form-control" id="exampleFormControlSelect1" required>
                 <option>CUIT</option>
                 <option>CUIL</option>          
               </select>
             </div>
             <div class="form-group col-md-5">
               <label for="numero_cuit_cuil_empleado">Numero</label>
-              <input type="number" name="numero_cuit_cuil_empleado" class="form-control{{ $errors->has('numero_cuit_cuil_empleado') ? ' is-invalid' : '' }}" id="numero_cuit_cuil_empleado">
+              <input type="number" name="numero_cuit_cuil_empleado" class="form-control{{ $errors->has('numero_cuit_cuil_empleado') ? ' is-invalid' : '' }}" id="numero_cuit_cuil_empleado" required>
               @if ($errors->has('numero_cuit_cuil_empleado'))
                 <span class="invalid-feedback">
                     <strong>{{ $errors->first('numero_cuit_cuil_empleado') }}</strong>
@@ -42,15 +42,15 @@
             </div>      
             <div class="form-group col-md-6">
               <label for="inputTelEmp">Telefono</label>
-              <input type="number" name="telefono_empleado"  class="form-control" id="inputTelEmp">
+              <input type="number" name="telefono_empleado"  class="form-control" id="inputTelEmp" required>
             </div>
             <div class="form-group col-md-6">
               <label for="inputDirEmp">Direccion</label>
-              <input type="text" name="direccion_empleado"  class="form-control" id="inputDirEmp">
+              <input type="text" name="direccion_empleado"  class="form-control" id="inputDirEmp" required>
             </div>
             <div class="form-group col-md-2">
               <label for="selectHoraIng">Hora Ingreso</label>
-              <select name="hora_ingreso_empleado"  class="form-control" id="selectHoraIng">
+              <select name="hora_ingreso_empleado"  class="form-control" id="selectHoraIng" required>
                 <option>06:00</option>
                 <option>07:00</option>
                 <option>07:00</option>          
@@ -65,7 +65,7 @@
             </div> 
             <div class="form-group col-md-2">
               <label for="selectHoraIng">Hora Salida</label>
-              <select name="hora_salida_empleado" class="form-control" id="selectHoraIng">
+              <select name="hora_salida_empleado" class="form-control" id="selectHoraIng" required>
                 <option>06:00</option>
                 <option>07:00</option>
                 <option>07:00</option>          
@@ -80,7 +80,7 @@
             </div>
             <div class="form-group col-md-8">
               <label for="inputDirEmp">Escriba los dias laborales del empleado. ej: "Lunes a Viernes" , "lunes Martes y Jueves"</label>
-              <input type="text" name="dias_laborables_empleado" class="form-control" id="inputDirEmp">
+              <input type="text" name="dias_laborables_empleado" class="form-control" id="inputDirEmp" required>
             </div>
           </div>       
           <button type="submit" class="btn btn-primary">Grabar</button>

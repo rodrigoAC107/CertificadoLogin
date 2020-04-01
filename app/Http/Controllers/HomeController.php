@@ -30,6 +30,8 @@ class HomeController extends Controller
 
         $organizacion = Organizacion::where('cuit_organizacion',$cuit)->get();
 
+        // dd($organizacion);
+
         if ($organizacion->isEmpty()) {
             return view('home');
         }else{

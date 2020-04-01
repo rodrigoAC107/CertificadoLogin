@@ -86,15 +86,26 @@
                 <div class="card-footer">
                     <div class="row">
                     <div class="custom-control custom-checkbox col-md-2">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1"
+                        onclick="javascript:comprobar(this);">
                         <label class="custom-control-label" for="customCheck1">Estoy de acuerdo</label>
                       </div>
-                    <a class="btn btn-info" href="{{route('organizacion.index')}}">Aceptar</a>
+                    <a class="btn btn-info text-white" style="display:none" name="btButton" id="btButton" href="{{route('organizacion.index')}}">Aceptar</a>
                 </div>  
             </div>
-                <i class="fas fa-users-class    "></i>
+                {{-- <i class="fas fa-users-class"></i> --}}
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function comprobar(obj){   
+        if (obj.checked){
+            document.getElementById('btButton').style.display = "";
+        } else{
+            document.getElementById('btButton').style.display = "none";
+        }     
+    }
+    </script>
 @endsection

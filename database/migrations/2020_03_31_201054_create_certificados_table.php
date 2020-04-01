@@ -18,9 +18,9 @@ class CreateCertificadosTable extends Migration
             $table->bigInteger('organizacion_id');
             $table->string('nombre_empleado');
             $table->string('apellido_empleado');
-            $table->bigInteger('dni_empleado');
+            $table->bigInteger('dni_empleado')->unique();;
             $table->string('cuit_cuil_empleado');
-            $table->bigInteger('numero_cuit_cuil_empleado');
+            $table->bigInteger('numero_cuit_cuil_empleado')->unique();;
             $table->bigInteger('telefono_empleado');
             $table->string('direccion_empleado');
             $table->string('hora_ingreso_empleado');
