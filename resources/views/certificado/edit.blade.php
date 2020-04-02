@@ -2,16 +2,16 @@
 
 @section('content')
 <div class="container">
-  @include('includes.error')
-  @include('includes.success')
-  <form method="POST" action="{{route('certificado.store')}}">
+@foreach($empleado as $empleados)
+<form method="POST" action="{{route('certificado.update', $empleados->id)}}">
+    {{method_field('PUT')}}
     @csrf
     <h3>Formulario para agregar empleados</h3>
-    <input type="hidden" name="cuitOrg" value="{{$cuitOrg}}">
+    {{-- <input type="hidden" name="cuitOrg" value="{{$cuitOrg}}"> --}}
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="nombre_empleado">Nombre</label>
-          <input type="text" name="nombre_empleado" class="form-control{{ $errors->has('nombre_empleado') ? ' is-invalid' : '' }}" id="nombre_empleado">
+          <input type="text" name="nombre_empleado" class="form-control{{ $errors->has('nombre_empleado') ? ' is-invalid' : '' }}" id="nombre_empleado" value="{{$empleados->nombre_empleado}}">
           @if ($errors->has('nombre_empleado'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('nombre_empleado') }}</strong>
@@ -20,7 +20,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="apellido_empleado">Apellido</label>
-          <input type="text" name="apellido_empleado" class="form-control{{ $errors->has('apellido_empleado') ? ' is-invalid' : '' }}" id="apellido_empleado">
+          <input type="text" name="apellido_empleado" class="form-control{{ $errors->has('apellido_empleado') ? ' is-invalid' : '' }}" id="apellido_empleado" value="{{$empleados->apellido_empleado}}">
           @if ($errors->has('apellido_empleado'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('apellido_empleado') }}</strong>
@@ -29,7 +29,7 @@
         </div>      
         <div class="form-group col-md-5">
           <label for="dni_empleado">Dni</label>
-          <input type="number" name="dni_empleado" class="form-control{{ $errors->has('dni_empleado') ? ' is-invalid' : '' }}" id="dni_empleado">
+          <input type="number" name="dni_empleado" class="form-control{{ $errors->has('dni_empleado') ? ' is-invalid' : '' }}" id="dni_empleado" value="{{$empleados->dni_empleado}}">
           @if ($errors->has('dni_empleado'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('dni_empleado') }}</strong>
@@ -50,7 +50,7 @@
         </div>
         <div class="form-group col-md-5">
           <label for="numero_cuit_cuil_empleado">Numero</label>
-          <input type="number" name="numero_cuit_cuil_empleado" class="form-control{{ $errors->has('numero_cuit_cuil_empleado') ? ' is-invalid' : '' }}" id="numero_cuit_cuil_empleado">
+          <input type="number" name="numero_cuit_cuil_empleado" class="form-control{{ $errors->has('numero_cuit_cuil_empleado') ? ' is-invalid' : '' }}" id="numero_cuit_cuil_empleado" value="{{$empleados->numero_cuit_cuil_empleado}}">
           @if ($errors->has('numero_cuit_cuil_empleado'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('numero_cuit_cuil_empleado') }}</strong>
@@ -59,7 +59,7 @@
         </div>      
         <div class="form-group col-md-6">
           <label for="telefono_empleado">Telefono</label>
-          <input type="number" name="telefono_empleado"  class="form-control{{ $errors->has('telefono_empleado') ? ' is-invalid' : '' }}" id="telefono_empleado">
+          <input type="number" name="telefono_empleado"  class="form-control{{ $errors->has('telefono_empleado') ? ' is-invalid' : '' }}" id="telefono_empleado" value="{{$empleados->telefono_empleado}}">
           @if ($errors->has('telefono_empleado'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('telefono_empleado') }}</strong>
@@ -68,7 +68,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="direccion_empleado">Direccion</label>
-          <input type="text" name="direccion_empleado"  class="form-control{{ $errors->has('direccion_empleado') ? ' is-invalid' : '' }}" id="direccion_empleado">
+          <input type="text" name="direccion_empleado"  class="form-control{{ $errors->has('direccion_empleado') ? ' is-invalid' : '' }}" id="direccion_empleado" value="{{$empleados->direccion_empleado}}">
           @if ($errors->has('direccion_empleado'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('direccion_empleado') }}</strong>
@@ -117,7 +117,7 @@
         </div>
         <div class="form-group col-md-8">
           <label for="inputDirEmp">Escriba los dias laborales del empleado. ej: "Lunes a Viernes" , "lunes Martes y Jueves"</label>
-          <input type="text" name="dias_laborables_empleado" class="form-control{{ $errors->has('dias_laborables_empleado') ? ' is-invalid' : '' }}" id="dias_laborables_empleado">
+          <input type="text" name="dias_laborables_empleado" class="form-control{{ $errors->has('dias_laborables_empleado') ? ' is-invalid' : '' }}" id="dias_laborables_empleado" value="{{$empleados->dias_laborables_empleado}}">
           @if ($errors->has('dias_laborables_empleado'))
           <span class="invalid-feedback">
               <strong>{{ $errors->first('dias_laborables_empleado') }}</strong>
@@ -129,41 +129,6 @@
     <a href="{{url('/home')}}" class="btn btn-danger m-2">Cancelar</a>
     </form>
 
-        @if($certificados)
-        <div class="container">
-            <h3>Lista de empleados</h3>
-            <table class="table table-hover" >
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Dni</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @foreach($certificados as $certifi) 
-                  <tr>
-                    <th scope="row">#</th>
-                    <td>{{$certifi->nombre_empleado}}</td>
-                    <td>{{$certifi->apellido_empleado}}</td>
-                    <td>{{$certifi->dni_empleado}}</td>
-                    <td>
-                      <a class="btn btn-primary" href="{{ route('certificado.edit',$certifi->id) }}">Edit</a>
-                      <form action="{{ route('certificado.destroy',$certifi->id) }}" method="POST">      
-                        @csrf
-                        @method('DELETE')
-          
-                      <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
-                    </td>
-                  </tr>   
-                @endforeach 
-                </tbody>
-              </table>   
-            </div>
-        @endif
-</div>
-</div>
-@endsection
+    @endforeach
+
+    @endsection

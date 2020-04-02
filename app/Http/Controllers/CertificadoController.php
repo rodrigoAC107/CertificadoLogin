@@ -115,7 +115,9 @@ class CertificadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $empleado = Certificado::where('id', $id)->get();
+
+        return view('certificado.edit', compact('empleado'));
     }
 
     /**
@@ -127,7 +129,36 @@ class CertificadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            "nombre_empleado" => "required",
+            "apellido_empleado" => "required",
+            "dni_empleado" => "required",
+            "cuit_cuil_empleado" => "required",
+            "numero_cuit_cuil_empleado" => "required",
+            "telefono_empleado" => "required",
+            "direccion_empleado" => "required",
+            "hora_ingreso_empleado" => "required",
+            "hora_salida_empleado" => "required",
+            "dias_laborables_empleado" => "required",
+        ];
+
+        $this->validate($request, $rules);
+
+        $certificado = Certificado::where('id', $id)->update([
+            "nombre_empleado"               => $request->nombre_empleado,
+            "apellido_empleado"             => $request->apellido_empleado,
+            "dni_empleado"                  => $request->dni_empleado,
+            "cuit_cuil_empleado"            => $request->cuit_cuil_empleado,
+            "numero_cuit_cuil_empleado"     => $request->numero_cuit_cuil_empleado,
+            "telefono_empleado"             => $request->telefono_empleado,
+            "direccion_empleado"            => $request->direccion_empleado,
+            "hora_ingreso_empleado"         => $request->hora_ingreso_empleado,
+            "hora_salida_empleado"          => $request->hora_salida_empleado,
+            "dias_laborables_empleado"      => $request->dias_laborables_empleado
+        ]);
+
+
+        return redirect()->route('certificado.create')->with('success', 'Se actualizo el empleado correctamente');
     }
 
     /**
@@ -140,6 +171,6 @@ class CertificadoController extends Controller
     {
         Certificado::where('id', $id)->delete();
   
-        return redirect()->route('certificado.create');
+        return redirect()->route('certificado.create')->with('success', 'Se elimino el empleado correctamente');
     }
 }

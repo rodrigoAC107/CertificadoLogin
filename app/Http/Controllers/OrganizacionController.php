@@ -138,7 +138,7 @@ class OrganizacionController extends Controller
         ]);
 
 
-        return redirect()->route('certificado.create');
+        return redirect()->route('certificado.create')->with('success', 'Se actualizo la organizacion correctamente');
     }
 
     /**
