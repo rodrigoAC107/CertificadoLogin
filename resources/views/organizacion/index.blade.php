@@ -2,6 +2,17 @@
 
 @section('content')
 <div class="container">
+  @if (count($errors) > 0)
+      <div class="alert alert-danger">
+        <p>Corrige los siguientes errores:</p>
+          <ul>
+              @foreach ($errors->all() as $message)
+                  <li>{{ $message }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
+  @include('includes.error')
   <h3>Formulario para agregar empresa</h3>
   <form method="POST" action="{{route('organizacion.store')}}">
     @csrf

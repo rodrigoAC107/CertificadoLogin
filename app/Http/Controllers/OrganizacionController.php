@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Organizacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrganizacionController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -44,11 +56,15 @@ class OrganizacionController extends Controller
             'rubro_organizacion' => 'required',
             'actividad_organizacion' => 'required',
             'telefono_organizacion' => 'required',
-            'email_organizacion' => 'required|email',
+            'email_organizacion' => 'required|email|unique:organizacion',
             'inciso_organizacion' => 'required'
         ];
 
         $this->validate($request, $rules);
+
+        if(Auth::user()->cuit_organizacion != $request->cuit_organizacion){
+            return redirect()->route('organizacion.index')->with('error','Ingresa el mismo CUIT que el de tu usuario');
+        }
 
         $campos = $request->all();
 
@@ -56,7 +72,11 @@ class OrganizacionController extends Controller
 
         $usuario = Organizacion::create($campos);
 
-        return redirect()->route('certificado.create');
+        $User = User::where('cuit_organizacion', $request->cuit_organizacion)->update([
+            'organizacion' => 1
+        ]);
+
+        return redirect()->route('certificado.create')->with('succes', 'Organización creada correctamente');
     }
 
     /**

@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
-    <form method="POST" action="{{route('certificado.store')}}">
+  @include('includes.error')
+  @include('includes.success')
+  <form method="POST" action="{{route('certificado.store')}}">
         @csrf
         <h3>Formulario para agregar empleados</h3>
         <input type="hidden" name="cuitOrg" value="{{$cuitOrg}}">
