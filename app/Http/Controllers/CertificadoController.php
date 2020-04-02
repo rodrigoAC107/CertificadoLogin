@@ -46,7 +46,7 @@ class CertificadoController extends Controller
         }
         
         $certificados = null;
-        return view('certificado.create', compact('cuitOrg', 'certificados'));
+        return redirect()->route('empleado.create', compact('certificados', 'cuitOrg'));
     }
 
     /**
@@ -93,7 +93,7 @@ class CertificadoController extends Controller
         
         $certificados = Certificado::where('organizacion_id', $cuitOrg)->get();
 
-        return view('certificado.crear_lista', compact('certificados', 'cuitOrg'));
+        return redirect()->route('empleado.create', compact('certificados', 'cuitOrg'))->with('success', 'Se guardo el empleado correctamente');
     }
 
     /**
@@ -158,7 +158,7 @@ class CertificadoController extends Controller
         ]);
 
 
-        return redirect()->route('certificado.create')->with('success', 'Se actualizo el empleado correctamente');
+        return redirect()->route('empleado.create')->with('success', 'Se actualizo el empleado correctamente');
     }
 
     /**
@@ -171,6 +171,6 @@ class CertificadoController extends Controller
     {
         Certificado::where('id', $id)->delete();
   
-        return redirect()->route('certificado.create')->with('success', 'Se elimino el empleado correctamente');
+        return redirect()->route('empleado.create')->with('success', 'Se elimino el empleado correctamente');
     }
 }

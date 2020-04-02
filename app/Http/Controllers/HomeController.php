@@ -38,7 +38,7 @@ class HomeController extends Controller
             if (Auth::user()->activo != 1) {
                 return view('welcome');
             }
-            return redirect()->route('certificado.create');
+            return redirect()->route('empleado.create');
         }
     }
 }

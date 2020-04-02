@@ -76,7 +76,7 @@ class OrganizacionController extends Controller
             'organizacion' => 1
         ]);
 
-        return redirect()->route('certificado.create')->with('succes', 'Organización creada correctamente');
+        return redirect()->route('empleado.create')->with('succes', 'Organización creada correctamente');
     }
 
     /**
@@ -138,7 +138,7 @@ class OrganizacionController extends Controller
         ]);
 
 
-        return redirect()->route('certificado.create')->with('success', 'Se actualizo la organizacion correctamente');
+        return redirect()->route('empleado.create')->with('success', 'Se actualizo la organizacion correctamente');
     }
 
     /**
