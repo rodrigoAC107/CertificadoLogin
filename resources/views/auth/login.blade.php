@@ -2,17 +2,30 @@
 
 @section('content')
 <div class="container">
+    <div class="col-md-12">
+        <h5>Pasos a seguir para la solicitud de autorizaciones para circular para las y los ciudadanos exceptuados en el decreto presidencial, durante el aislamiento social, preventivo y obligatorio:</h5>
+        <br>
+        <p>1-En el sector privado el empleador debe ingresar al dominio: permisocovid.larioja.gob.ar y <span class="font-weight-bold">registrarse</span></p>
+        <p>2-Cargar los datos de su organización u empresa.</p>
+        <p>3-Cargar los datos de sus empleados y empleadas.</p>
+        <p>4- Una vez enviado el formulario de manera virtual, se realiza el cruce de datos y autorización.</p>
+        <p>5- Se comunica al empleador o trabajador/a fecha de retiro de las credenciales.</p>
+        <br>
+        <h6 class="font-weight-bold">Cabe destacar que se pondrá a disposición la línea telefónica: 4468444 y 3804446522 (vídeo llamadas) para consultas y casos especiales dentro de las 15 excepciones del decreto 297/2020. Las mismas funcionarán de 9 a 20 hs.</h6>
+    </div>
+    <br>
     <div class="row justify-content-center">
         <div class="col-md-8">
+            
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header text-center">{{ __('Si ya estas registrado ingresa aqui al sistema, sino dirigete a la seccion  ') }}<a class="btn btn-danger" href="{{ route('register') }}">{{ __('Registrarse') }}</a></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -26,7 +39,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -42,7 +55,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    {{ __('Ingresar') }}
                                 </button>
 
                             </div>

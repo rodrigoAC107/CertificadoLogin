@@ -9,7 +9,7 @@
             <h6 class="text-center">Durante el periodo de estado de emergencia por COVID-19, deberás solicitar un permiso especial para circular por la vía pública sólo si es absolutamente necesario y si tu condición laboral lo requiere.
             </h6>
             <div class="card">
-                <div class="card-header">Excempos al decreto</div>
+                <div class="card-header">Corrobora si tu Organizacion/Empresa figura dentro de las 24 exepciones</div>
                 <div class="card-body">
                     <p class="card-text">
                         1. Personal de Salud, Fuerzas de seguridad, Fuerzas Armadas, actividad migratoria, servicio meteorológico nacional, bomberos y control de tráfico aéreo.
