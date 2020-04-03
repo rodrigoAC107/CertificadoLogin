@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 @foreach($empleado as $empleados)
-<form method="POST" action="{{route('certificado.update', $empleados->id)}}">
+<form method="POST" action="{{route('empleado.update', $empleados->id)}}">
     {{method_field('PUT')}}
     @csrf
     <h3>Formulario para agregar empleados</h3>

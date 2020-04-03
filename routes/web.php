@@ -16,6 +16,7 @@ Route::get('/', function () {return redirect('login');});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/terminacion', 'HomeController@termino')->name('termino');
 
 Route::resource('organizacion', 'OrganizacionController');
 Route::resource('empleado', 'CertificadoController');

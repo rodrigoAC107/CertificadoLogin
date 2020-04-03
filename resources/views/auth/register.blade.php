@@ -43,7 +43,7 @@
                             <label for="cuit_organizacion" class="col-md-4 col-form-label text-md-right">{{ __('Cuit de Organizacion') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cuit_organizacion" type="cuit_organizacion" class="form-control @error('cuit_organizacion') is-invalid @enderror" name="cuit_organizacion" value="{{ old('cuit_organizacion') }}" required autocomplete="cuit_organizacion">
+                                <input id="cuit_organizacion" type="number" class="form-control @error('cuit_organizacion') is-invalid @enderror" name="cuit_organizacion" value="{{ old('cuit_organizacion') }}" required autocomplete="cuit_organizacion">
 
                                 @error('cuit_organizacion')
                                     <span class="invalid-feedback" role="alert">

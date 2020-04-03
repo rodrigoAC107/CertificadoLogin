@@ -41,4 +41,8 @@ class HomeController extends Controller
             return redirect()->route('empleado.create');
         }
     }
+
+    public function termino(){
+        return view('termino');
+    }
 }

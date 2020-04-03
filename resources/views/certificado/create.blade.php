@@ -4,7 +4,7 @@
 <div class="container">
   @include('includes.error')
   @include('includes.success')
-  <form method="POST" action="{{route('certificado.store')}}">
+  <form method="POST" action="{{route('empleado.store')}}">
     @csrf
     <h3>Formulario para agregar empleados</h3>
     <input type="hidden" name="cuitOrg" value="{{$cuitOrg}}">
@@ -154,7 +154,7 @@
         </div>
       </div>       
       <button type="submit" class="btn btn-primary">Grabar</button>
-    <a href="{{url('/home')}}" class="btn btn-danger m-2">Cancelar</a>
+    <a href="{{route('termino')}}" class="btn btn-danger m-2">Cancelar</a>
     </form>
 
         @if($certificados)
@@ -178,9 +178,9 @@
                     <td>{{$certifi->apellido_empleado}}</td>
                     <td>{{$certifi->dni_empleado}}</td>
                     <td>
-                      <form action="{{ route('certificado.destroy',$certifi->id) }}" method="POST">
+                      <form action="{{ route('empleado.destroy',$certifi->id) }}" method="POST">
         
-                        <a class="btn btn-primary" href="{{ route('certificado.edit',$certifi->id) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('empleado.edit',$certifi->id) }}">Edit</a>
        
                         @csrf
                         @method('DELETE')
